@@ -1,12 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeviceLocation</title>
-    <link type="text/css" rel="stylesheet" href="styles.css">
-    <script type="application/javascript" src="composeApp.js"></script>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="设备位置信息上报系统">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 高德地图 JS API -->
+  <script type="text/javascript">
+    window._AMapSecurityConfig = {
+      securityJsCode: '4ff642802f60524832b42fe80ef8524c',
+    };
+  </script>
+  <script type="text/javascript"
+          src="https://webapi.amap.com/maps?v=2.0&key=5254508ebc7a1c08eff2ea6138a5fddc&plugin=AMap.Geolocation"></script>
+  <!-- 加载状态检测 -->
+  <script>
+    window.amapLoaded = false;
+    window.amapError = null;
+
+    // 等待JS加载完成
+    function checkAmap() {
+      if (typeof AMap !== 'undefined' && AMap.Geolocation) {
+        window.amapLoaded = true;
+        console.log('✅ [高德JS] 加载成功');
+      } else {
+        window.amapError = 'AMap.Geolocation未定义';
+        console.error('❌ [高德JS] 加载失败，请检查：');
+        console.error('   1. Key是否正确且已开通"Web服务"');
+        console.error('   2. 安全密钥是否匹配');
+        console.error('   3. 网络是否可访问webapi.amap.com');
+      }
+    }
+
+    // 页面加载完成后检查
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkAmap);
+    } else {
+      checkAmap();
+    }
+  </script>
+
+  <title>设备定位上报</title>
 </head>
 <body>
+<script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  &lt;!&ndash;-->
+<!--    If you are serving your web app in a path other than the root, change the-->
+<!--    href value below to reflect the base path you are serving from.-->
+
+<!--    The path provided below has to start and end with a slash "/" in order for-->
+<!--    it to work correctly.-->
+
+<!--    For more details:-->
+<!--    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base-->
+
+<!--    This is a placeholder for base href that will be replaced by the value of-->
+<!--    the `&#45;&#45;base-href` argument provided to `flutter build`.-->
+<!--  &ndash;&gt;-->
+<!--  <base href="/">-->
+
+<!--  <meta charset="UTF-8">-->
+<!--  <meta content="IE=Edge" http-equiv="X-UA-Compatible">-->
+<!--  <meta name="description" content="A new Flutter project.">-->
+
+<!--  &lt;!&ndash; iOS meta tags & icons &ndash;&gt;-->
+<!--  <meta name="mobile-web-app-capable" content="yes">-->
+<!--  <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+<!--  <meta name="apple-mobile-web-app-title" content="test_flutter">-->
+<!--  <link rel="apple-touch-icon" href="icons/Icon-192.png">-->
+
+<!--  &lt;!&ndash; Favicon &ndash;&gt;-->
+<!--  <link rel="icon" type="image/png" href="favicon.png"/>-->
+
+<!--  <title>test_flutter</title>-->
+<!--  <link rel="manifest" href="manifest.json">-->
+<!--</head>-->
+<!--<body>-->
+<!--<script src="flutter_bootstrap.js" async></script>-->
+<!--</body>-->
+<!--</html>-->
